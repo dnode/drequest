@@ -1,0 +1,24 @@
+{
+  "name": "drequest",
+  "version": "1.0.0",
+  "description": "Building requests step by step in a modularized way",
+  "license": "MIT",
+  "homepage": "http://github.com/dnode/drequest",
+  "author": {
+    "name": "Sharaal",
+    "email": "developer@dragonprojects.de",
+    "url": "http://dragonprojects.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnode/drequest.git"
+  },
+  "readmeFilename": "README.md",
+  "main": "src/lib.js",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "urijs": "^1.18.7"
+  }
+}
