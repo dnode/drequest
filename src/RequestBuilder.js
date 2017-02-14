@@ -1,8 +1,8 @@
 'use strict';
 
-const DRequest = require('./DRequest');
+const Request = require('./Request');
 
-class DRequestBuilder {
+class RequestBuilder {
   constructor() {
     this._names = [];
     this._options = {};
@@ -19,13 +19,12 @@ class DRequestBuilder {
   }
 
   request(names = []) {
-    const request = new DRequest();
+    const request = new Request();
     for (const name of this._names.concat(names)) {
-      console.log(name);
       request.options(this._options[name]);
     }
     return request;
   }
 }
 
-module.exports = DRequestBuilder;
+module.exports = RequestBuilder;

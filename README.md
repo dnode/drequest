@@ -11,10 +11,10 @@
 ## Simplest usage
 
 ```
-const DRequest = require('drequest').DRequest;
+const Request = require('drequest').Request;
 
 const response = 
-  await new DRequest()
+  await new Request()
     .options({
       url: 'http://google.de',
     })
@@ -25,16 +25,16 @@ const response =
 ## Set options for a request by a name
 
 ```
-const { DRequest, DRequestBuilder } = require('drequest');
+const { Request, RequestBuilder } = require('drequest');
 
-const dRequestBuilder =
-  new DRequestBuilder()
+const requestBuilder =
+  new RequestBuilder()
     .options('google', {
       url: 'http://google.de',
     });
 
 const response = 
-  await DRequestBuilder.request('google')
+  await RequestBuilder.request('google')
     .send();
 ```
 
@@ -42,27 +42,27 @@ const response =
 ## Set options for all requests
 
 ```
-const { DRequest, DRequestBuilder } = require('drequest');
+const { Request, RequestBuilder } = require('drequest');
 
-const dRequestBuilder =
-  new DRequestBuilder()
+const requestBuilder =
+  new RequestBuilder()
     .names('google')
     .options('google', {
       url: 'http://google.de',
     });
 
 const response = 
-  await DRequestBuilder.request()
+  await RequestBuilder.request()
     .send();
 ```
 
 ## Define and use a class for more complex options
 
 ```
-const { DRequest, DRequestBuilder } = require('drequest');
+const { Request, RequestBuilder } = require('drequest');
 
-const dRequestBuilder =
-  new DRequestBuilder()
+const requestBuilder =
+  new RequestBuilder()
     .names('google')
     .options('google', {
       url: {
@@ -76,7 +76,7 @@ class SearchOptions {
     this.q = q;
   }
   
-  toDRequestOptions() {
+  toRequestOptions() {
     return {
       url: {
         path: '/search',
@@ -89,7 +89,7 @@ class SearchOptions {
 }
 
 const response = 
-  await DRequestBuilder.request()
+  await RequestBuilder.request()
     .options(new SearchOptions('how to use google search'))
     .send();
 ```

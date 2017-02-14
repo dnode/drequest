@@ -4,14 +4,14 @@ const _ = require('lodash');
 const rp = require('request-promise');
 const URI = require('urijs');
 
-class DRequest {
+class Request {
   constructor() {
     this._options = {};
   }
 
   options(options) {
-    if (options.toDRequestOptions) {
-      options = options.toDRequestOptions(this._options);
+    if (options.toRequestOptions) {
+      options = options.toRequestOptions(this._options);
     }
     _.mergeWith(this._options, options, (to, from) => {
       if (_.isArray(from)) {
@@ -40,4 +40,4 @@ class DRequest {
   }
 }
 
-module.exports = DRequest;
+module.exports = Request;

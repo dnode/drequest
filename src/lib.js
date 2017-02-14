@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-  DRequest: require('./DRequest'),
-  DRequestBuilder: require('./DRequestBuilder'),
+  Request: require('./Request'),
+  RequestBuilder: require('./RequestBuilder'),
 };
