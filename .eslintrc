@@ -1,0 +1,6 @@
+{
+  "extends": "dnode",
+  "rules": {
+    "strict": "off"
+  }
+}

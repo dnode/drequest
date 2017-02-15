@@ -15,10 +15,17 @@
   },
   "readmeFilename": "README.md",
   "main": "src/lib.js",
+  "scripts": {
+    "lint": "eslint src"
+  },
   "dependencies": {
     "lodash": "^4.17.4",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "urijs": "^1.18.7"
+  },
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-dnode": "^1.1.1"
   }
 }
