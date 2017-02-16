@@ -24,7 +24,7 @@ class Request {
     return this;
   }
 
-  send() {
+  get() {
     const options = _.cloneDeep(this._options);
     if (typeof options.url === 'object') {
       const url = new URI(options.url);
@@ -36,7 +36,11 @@ class Request {
       }
       options.url = url.toString();
     }
-    return rp(options);
+    return options;
+  }
+
+  send() {
+    return rp(this.get());
   }
 }
 
