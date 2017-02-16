@@ -25,7 +25,7 @@ const response =
 ## Set options for a request by a name
 
 ```
-const { Request, RequestBuilder } = require('drequest');
+const RequestBuilder = require('drequest').RequestBuilder;
 
 const requestBuilder =
   new RequestBuilder()
@@ -42,9 +42,9 @@ const response =
 ## Set options for all requests
 
 ```
-const { Request, RequestBuilder } = require('drequest');
+const RequestBuilder = require('drequest').RequestBuilder;
 
-const requestBuilder =
+const google =
   new RequestBuilder()
     .names('google')
     .options('google', {
@@ -52,16 +52,16 @@ const requestBuilder =
     });
 
 const response = 
-  await RequestBuilder.request()
+  await google.request()
     .send();
 ```
 
 ## Define and use a class for more complex options
 
 ```
-const { Request, RequestBuilder } = require('drequest');
+const RequestBuilder = require('drequest').RequestBuilder;
 
-const requestBuilder =
+const google =
   new RequestBuilder()
     .names('google')
     .options('google', {
@@ -89,7 +89,7 @@ class SearchOptions {
 }
 
 const response = 
-  await RequestBuilder.request()
+  await google.request()
     .options(new SearchOptions('how to use google search'))
     .send();
 ```
