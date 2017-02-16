@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dnode/drequest.svg?branch=master)](https://travis-ci.org/dnode/drequest)
 [![Dependency Status](https://david-dm.org/dnode/drequest/status.svg)](https://david-dm.org/dnode/drequest)
 [![devDependency Status](https://david-dm.org/dnode/drequest/dev-status.svg)](https://david-dm.org/dnode/drequest?type=dev)
 
