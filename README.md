@@ -16,10 +16,7 @@ const Request = require('drequest').Request;
 
 const response = 
   await new Request()
-    .options({
-      url: 'http://google.de',
-    })
-    .send();
+    .get('http://google.de');
 ```
 
 
@@ -30,7 +27,7 @@ const RequestBuilder = require('drequest').RequestBuilder;
 
 const requestBuilder =
   new RequestBuilder()
-    .options('google', {
+    .addOptions('google', {
       url: 'http://google.de',
     });
 
@@ -47,7 +44,7 @@ const RequestBuilder = require('drequest').RequestBuilder;
 
 const google =
   new RequestBuilder()
-    .options('google', {
+    .addOptions('google', {
       url: 'http://google.de',
     })
     .names('google');
@@ -64,7 +61,7 @@ const RequestBuilder = require('drequest').RequestBuilder;
 
 const google =
   new RequestBuilder()
-    .options('google', {
+    .addOptions('google', {
       url: {
         hostname: 'google.de',
         protocol: 'http',
@@ -91,6 +88,6 @@ class SearchOptions {
 
 const response = 
   await google.request()
-    .options(new SearchOptions('how to use google search'))
+    .addOptions(new SearchOptions('how to use google search'))
     .send();
 ```

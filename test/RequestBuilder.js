@@ -12,28 +12,28 @@ describe('RequestBuilder.js', () => {
     const actualA =
       requestBuilder
         .request()
-        .get();
+        .getOptions();
     const expectedA = {};
     assert.deepEqual(expectedA, actualA);
 
     const actualB =
       requestBuilder
         .request()
-        .get();
+        .getOptions();
     const expectedB = {};
     assert.deepEqual(expectedB, actualB);
   });
 
   it('should be able to handle options by name for one request', () => {
     const requestBuilder = new RequestBuilder()
-      .options('google', {
+      .setOptions('google', {
         url: 'http://google.de',
       });
 
     const actualA =
       requestBuilder
         .request('google')
-        .get();
+        .getOptions();
     const expectedA = {
       url: 'http://google.de',
     };
@@ -42,22 +42,22 @@ describe('RequestBuilder.js', () => {
     const actualB =
       requestBuilder
         .request()
-        .get();
+        .getOptions();
     const expectedB = {};
     assert.deepEqual(expectedB, actualB);
   });
 
   it('should be able to handle options set as default for all requests', () => {
     const requestBuilder = new RequestBuilder()
-      .options('google', {
+      .setOptions('google', {
         url: 'http://google.de',
       })
-      .names('google');
+      .addNames('google');
 
     const actualA =
       requestBuilder
         .request()
-        .get();
+        .getOptions();
     const expectedA = {
       url: 'http://google.de',
     };
@@ -66,7 +66,7 @@ describe('RequestBuilder.js', () => {
     const actualB =
       requestBuilder
         .request()
-        .get();
+        .getOptions();
     const expectedB = {
       url: 'http://google.de',
     };

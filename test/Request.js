@@ -9,7 +9,7 @@ describe('Request.js', () => {
   it('should be empty if nothing is set', () => {
     const actual =
       new Request()
-        .get();
+        .getOptions();
     const expected = {};
     assert.deepEqual(expected, actual);
   });
@@ -17,10 +17,10 @@ describe('Request.js', () => {
   it('should be able to handle one simple options', () => {
     const actual =
       new Request()
-        .options({
+        .addOptions({
           url: 'http://google.de',
         })
-        .get();
+        .getOptions();
     const expected = { url: 'http://google.de' };
     assert.deepEqual(expected, actual);
   });
@@ -28,13 +28,13 @@ describe('Request.js', () => {
   it('should be able to handle url object options', () => {
     const actual =
       new Request()
-        .options({
+        .addOptions({
           url: {
             hostname: 'google.de',
             protocol: 'http',
           },
         })
-        .get();
+        .getOptions();
     const expected = { url: 'http://google.de' };
     assert.deepEqual(expected, actual);
   });
@@ -42,12 +42,12 @@ describe('Request.js', () => {
   it('should be able to handle object options', () => {
     const actual =
       new Request()
-        .options({
+        .addOptions({
           toRequestOptions: () => ({
             url: 'http://google.de',
           }),
         })
-        .get();
+        .getOptions();
     const expected = { url: 'http://google.de' };
     assert.deepEqual(expected, actual);
   });
@@ -55,13 +55,13 @@ describe('Request.js', () => {
   it('should merge options with different attributes', () => {
     const actual =
       new Request()
-        .options({
+        .addOptions({
           method: 'post',
         })
-        .options({
+        .addOptions({
           url: 'http://google.de',
         })
-        .get();
+        .getOptions();
     const expected = { method: 'post', url: 'http://google.de' };
     assert.deepEqual(expected, actual);
   });
@@ -69,13 +69,13 @@ describe('Request.js', () => {
   it('should overwrite options with the same attributes and number values', () => {
     const actual =
       new Request()
-        .options({
+        .addOptions({
           number: 1,
         })
-        .options({
+        .addOptions({
           number: 2,
         })
-        .get();
+        .getOptions();
     const expected = { number: 2 };
     assert.deepEqual(expected, actual);
   });
@@ -83,13 +83,13 @@ describe('Request.js', () => {
   it('should overwrite options with the same attributes and string values', () => {
     const actual =
       new Request()
-        .options({
+        .addOptions({
           string: 'a',
         })
-        .options({
+        .addOptions({
           string: 'b',
         })
-        .get();
+        .getOptions();
     const expected = { string: 'b' };
     assert.deepEqual(expected, actual);
   });
@@ -97,14 +97,14 @@ describe('Request.js', () => {
   it('should concatenate options with the same attributes and array values', () => {
     const actual =
       new Request()
-        .options({})
-        .options({
+        .addOptions({})
+        .addOptions({
           array: ['a'],
         })
-        .options({
+        .addOptions({
           array: ['b'],
         })
-        .get();
+        .getOptions();
     const expected = { array: ['a', 'b'] };
     assert.deepEqual(expected, actual);
   });
