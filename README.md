@@ -47,10 +47,10 @@ const RequestBuilder = require('drequest').RequestBuilder;
 
 const google =
   new RequestBuilder()
-    .names('google')
     .options('google', {
       url: 'http://google.de',
-    });
+    })
+    .names('google');
 
 const response = 
   await google.request()
@@ -64,13 +64,13 @@ const RequestBuilder = require('drequest').RequestBuilder;
 
 const google =
   new RequestBuilder()
-    .names('google')
     .options('google', {
       url: {
         hostname: 'google.de',
         protocol: 'http',
       },
-    });
+    })
+    .names('google');
     
 class SearchOptions {
   constructor(q) {

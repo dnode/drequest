@@ -49,10 +49,10 @@ describe('RequestBuilder.js', () => {
 
   it('should be able to handle options set as default for all requests', () => {
     const requestBuilder = new RequestBuilder()
-      .names('google')
       .options('google', {
         url: 'http://google.de',
-      });
+      })
+      .names('google');
 
     const actualA =
       requestBuilder
