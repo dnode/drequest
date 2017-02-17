@@ -63,19 +63,13 @@ class Request {
     return this.send(path, options);
   }
 
-  post(path, body, options) {
+  post(path, options) {
     this.addOptions({ method: 'post' });
-    if (body) {
-      this.addOptions({ body });
-    }
     return this.send(path, options);
   }
 
-  put(path, body, options) {
+  put(path, options) {
     this.addOptions({ method: 'put' });
-    if (body) {
-      this.addOptions({ body });
-    }
     return this.send(path, options);
   }
 }
