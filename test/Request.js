@@ -6,6 +6,14 @@ const assert = require('assert');
 const Request = require('../src/Request');
 
 describe('Request.js', () => {
+  it('should be empty if nothing is set', () => {
+    const actual =
+      new Request()
+        .get();
+    const expected = {};
+    assert.deepEqual(expected, actual);
+  });
+
   it('should be able to handle one simple options', () => {
     const actual =
       new Request()
