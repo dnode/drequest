@@ -10,17 +10,22 @@ class Request {
   }
 
   addOptions(options) {
-    if (options.toRequestOptions) {
-      options = options.toRequestOptions(this.options);
+    if (!Array.isArray(options)) {
+      options = [options];
     }
-    _.mergeWith(this.options, options, (to, from) => {
-      if (_.isArray(from)) {
-        if (!to) {
-          to = [];
-        }
-        return to.concat(from);
+    for (let option of options) {
+      if (option.toRequestOptions) {
+        option = option.toRequestOptions(this.options);
       }
-    });
+      _.mergeWith(this.options, option, (to, from) => {
+        if (_.isArray(from)) {
+          if (!to) {
+            to = [];
+          }
+          return to.concat(from);
+        }
+      });
+    }
     return this;
   }
 
@@ -44,11 +49,11 @@ class Request {
       options = path;
       path = undefined;
     }
-    if (options) {
-      this.addOptions(options);
-    }
     if (path) {
       this.addOptions({ url: { path } });
+    }
+    if (options) {
+      this.addOptions(options);
     }
     return rp(this.getOptions());
   }
