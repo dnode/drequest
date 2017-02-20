@@ -25,7 +25,7 @@ describe('Request.js', () => {
     assert.deepEqual(expected, actual);
   });
 
-  it('should be able to handle url object options', () => {
+  it('should be able to handle simple url object options', () => {
     const actual =
       new Request()
         .addOptions({
@@ -36,6 +36,42 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { url: 'http://google.de' };
+    assert.deepEqual(expected, actual);
+  });
+
+  it('should be able to handle complex url object options with queries', () => {
+    const actual =
+      new Request()
+        .addOptions({
+          url: {
+            hostname: 'google.de',
+            protocol: 'http',
+            query: {
+              'a[]': ['b', 'c'],
+              d: ['e'],
+            }
+          },
+        })
+        .getOptions();
+    const expected = { url: 'http://google.de?a%5B%5D=b&a%5B%5D=c&d=e' };
+    assert.deepEqual(expected, actual);
+  });
+
+  it('should be able to handle complex url object options with searchs', () => {
+    const actual =
+      new Request()
+        .addOptions({
+          url: {
+            hostname: 'google.de',
+            protocol: 'http',
+            search: {
+              'a[]': ['b', 'c'],
+              d: ['e'],
+            }
+          },
+        })
+        .getOptions();
+    const expected = { url: 'http://google.de?a%5B%5D=b&a%5B%5D=c&d=e' };
     assert.deepEqual(expected, actual);
   });
 
@@ -106,6 +142,22 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { array: ['a', 'b'] };
+    assert.deepEqual(expected, actual);
+  });
+
+  it('should accept also an array of options', () => {
+    const actual =
+      new Request()
+        .addOptions([
+          {
+            method: 'post',
+          },
+          {
+            url: 'http://google.de',
+          },
+        ])
+        .getOptions();
+    const expected = { method: 'post', url: 'http://google.de' };
     assert.deepEqual(expected, actual);
   });
 });
