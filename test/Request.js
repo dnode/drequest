@@ -49,7 +49,7 @@ describe('Request.js', () => {
             query: {
               'a[]': ['b', 'c'],
               d: ['e'],
-            }
+            },
           },
         })
         .getOptions();
@@ -67,7 +67,7 @@ describe('Request.js', () => {
             search: {
               'a[]': ['b', 'c'],
               d: ['e'],
-            }
+            },
           },
         })
         .getOptions();
