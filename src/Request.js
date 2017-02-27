@@ -55,7 +55,11 @@ class Request {
     if (options) {
       this.addOptions(options);
     }
-    return rp(this.getOptions());
+    options = this.getOptions();
+    if (typeof options.body === 'object') {
+      options.json = true;
+    }
+    return rp(options);
   }
 
   delete(path, options) {
