@@ -48,11 +48,9 @@ describe('RequestBuilder.js', () => {
   });
 
   it('should be able to handle options set as default for all requests', () => {
-    const requestBuilder = new RequestBuilder()
-      .setOptions('google', {
-        url: 'http://google.de',
-      })
-      .addNames('google');
+    const requestBuilder = new RequestBuilder({
+      url: 'http://google.de',
+    });
 
     const actualA =
       requestBuilder

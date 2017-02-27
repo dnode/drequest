@@ -14,7 +14,17 @@ describe('Request.js', () => {
     assert.deepEqual(expected, actual);
   });
 
-  it('should be able to handle one simple options', () => {
+  it('should be able to handle one simple options got on construction', () => {
+    const actual =
+      new Request({
+        url: 'http://google.de',
+      })
+      .getOptions();
+    const expected = { url: 'http://google.de' };
+    assert.deepEqual(expected, actual);
+  });
+
+  it('should be able to handle one simple options got later', () => {
     const actual =
       new Request()
         .addOptions({

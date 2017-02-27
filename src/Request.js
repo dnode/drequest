@@ -5,8 +5,11 @@ const rp = require('request-promise');
 const URI = require('urijs');
 
 class Request {
-  constructor() {
+  constructor(options) {
     this.options = {};
+    if (options) {
+      this.addOptions(options);
+    }
   }
 
   addOptions(options) {

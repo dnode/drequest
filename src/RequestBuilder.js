@@ -3,14 +3,9 @@
 const Request = require('./Request');
 
 class RequestBuilder {
-  constructor() {
-    this.names = [];
+  constructor(defaultOptions) {
+    this.defaultOptions = defaultOptions;
     this.options = {};
-  }
-
-  addNames(names) {
-    this.names = this.names.concat(names);
-    return this;
   }
 
   setOptions(name, options) {
@@ -19,8 +14,11 @@ class RequestBuilder {
   }
 
   request(names = []) {
-    const request = new Request();
-    for (const name of this.names.concat(names)) {
+    if (!Array.isArray(names)) {
+      names = [names];
+    }
+    const request = new Request(this.defaultOptions);
+    for (const name of names) {
       request.addOptions(this.options[name]);
     }
     return request;
