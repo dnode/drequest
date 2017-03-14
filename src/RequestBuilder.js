@@ -23,6 +23,26 @@ class RequestBuilder {
     }
     return request;
   }
+
+  send(path, options) {
+    return this.request().send(path, options);
+  }
+
+  delete(path, options) {
+    return this.request().delete(path, options);
+  }
+
+  get(path, options) {
+    return this.request().get(path, options);
+  }
+
+  post(path, options) {
+    return this.request().post(path, options);
+  }
+
+  put(path, options) {
+    return this.request().put(path, options);
+  }
 }
 
 module.exports = RequestBuilder;

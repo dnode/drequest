@@ -13,22 +13,22 @@ class Request {
   }
 
   addOptions(options) {
-    if (!Array.isArray(options)) {
-      options = [options];
+    if (Array.isArray(options)) {
+      options.forEach(options => this.addOptions(options));
+      return this;
     }
-    for (let option of options) {
-      if (option.toRequestOptions) {
-        option = option.toRequestOptions(this.options);
-      }
-      _.mergeWith(this.options, option, (to, from) => {
-        if (_.isArray(from)) {
-          if (!to) {
-            to = [];
-          }
-          return to.concat(from);
+    if (options.toRequestOptions) {
+      this.addOptions(options.toRequestOptions(this.options));
+      return this;
+    }
+    _.mergeWith(this.options, options, (to, from) => {
+      if (_.isArray(from)) {
+        if (!to) {
+          to = [];
         }
-      });
-    }
+        return to.concat(from);
+      }
+    });
     return this;
   }
 

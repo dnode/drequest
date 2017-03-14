@@ -1,6 +1,6 @@
 {
   "name": "drequest",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Building requests step by step in a modularized way",
   "license": "MIT",
   "homepage": "http://github.com/dnode/drequest",
