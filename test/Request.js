@@ -5,13 +5,15 @@
 const assert = require('assert');
 const Request = require('../src/Request');
 
+const defaultOptions = { timeout: 3000 };
+
 describe('Request.js', () => {
   it('should be empty if nothing is set', () => {
     const actual =
       new Request()
         .getOptions();
     const expected = {};
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should be able to handle one simple options got on construction', () => {
@@ -21,7 +23,7 @@ describe('Request.js', () => {
       })
       .getOptions();
     const expected = { url: 'http://google.de' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should be able to handle one simple options got later', () => {
@@ -32,7 +34,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { url: 'http://google.de' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should be able to handle simple url object options', () => {
@@ -46,7 +48,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { url: 'http://google.de' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should be able to handle complex url object options with queries', () => {
@@ -64,7 +66,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { url: 'http://google.de?a%5B%5D=b&a%5B%5D=c&d=e' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should be able to handle complex url object options with searchs', () => {
@@ -82,7 +84,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { url: 'http://google.de?a%5B%5D=b&a%5B%5D=c&d=e' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should be able to handle object options', () => {
@@ -95,7 +97,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { url: 'http://google.de' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should merge options with different attributes', () => {
@@ -109,7 +111,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { method: 'post', url: 'http://google.de' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should overwrite options with the same attributes and number values', () => {
@@ -123,7 +125,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { number: 2 };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should overwrite options with the same attributes and string values', () => {
@@ -137,7 +139,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { string: 'b' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should concatenate options with the same attributes and array values', () => {
@@ -152,7 +154,7 @@ describe('Request.js', () => {
         })
         .getOptions();
     const expected = { array: ['a', 'b'] };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 
   it('should accept also an array of options', () => {
@@ -168,6 +170,6 @@ describe('Request.js', () => {
         ])
         .getOptions();
     const expected = { method: 'post', url: 'http://google.de' };
-    assert.deepEqual(expected, actual);
+    assert.deepEqual(actual, Object.assign({}, defaultOptions, expected));
   });
 });

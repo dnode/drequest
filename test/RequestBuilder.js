@@ -5,6 +5,8 @@
 const assert = require('assert');
 const RequestBuilder = require('../src/RequestBuilder');
 
+const defaultOptions = { timeout: 3000 };
+
 describe('RequestBuilder.js', () => {
   it('should be empty if nothing is set', () => {
     const requestBuilder = new RequestBuilder();
@@ -14,14 +16,14 @@ describe('RequestBuilder.js', () => {
         .request()
         .getOptions();
     const expectedA = {};
-    assert.deepEqual(expectedA, actualA);
+    assert.deepEqual(actualA, Object.assign({}, defaultOptions, expectedA));
 
     const actualB =
       requestBuilder
         .request()
         .getOptions();
     const expectedB = {};
-    assert.deepEqual(expectedB, actualB);
+    assert.deepEqual(actualB, Object.assign({}, defaultOptions, expectedB));
   });
 
   it('should be able to handle options by name for one request', () => {
@@ -37,14 +39,14 @@ describe('RequestBuilder.js', () => {
     const expectedA = {
       url: 'http://google.de',
     };
-    assert.deepEqual(expectedA, actualA);
+    assert.deepEqual(actualA, Object.assign({}, defaultOptions, expectedA));
 
     const actualB =
       requestBuilder
         .request()
         .getOptions();
     const expectedB = {};
-    assert.deepEqual(expectedB, actualB);
+    assert.deepEqual(actualB, Object.assign({}, defaultOptions, expectedB));
   });
 
   it('should be able to handle options set as default for all requests', () => {
@@ -59,7 +61,7 @@ describe('RequestBuilder.js', () => {
     const expectedA = {
       url: 'http://google.de',
     };
-    assert.deepEqual(expectedA, actualA);
+    assert.deepEqual(actualA, Object.assign({}, defaultOptions, expectedA));
 
     const actualB =
       requestBuilder
@@ -68,6 +70,6 @@ describe('RequestBuilder.js', () => {
     const expectedB = {
       url: 'http://google.de',
     };
-    assert.deepEqual(expectedB, actualB);
+    assert.deepEqual(actualB, Object.assign({}, defaultOptions, expectedB));
   });
 });
