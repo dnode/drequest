@@ -6,7 +6,9 @@ const URI = require('urijs');
 
 class Request {
   constructor(options) {
-    this.options = {};
+    this.options = {
+      timeout: 3000,
+    };
     if (options) {
       this.addOptions(options);
     }
