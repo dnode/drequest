@@ -11,7 +11,7 @@
 
 ## Simplest usage
 
-```
+```javascript
 const Request = require('drequest').Request;
 
 const response = 
@@ -22,7 +22,7 @@ const response =
 
 ## Set options for a request by a name
 
-```
+```javascript
 const RequestBuilder = require('drequest').RequestBuilder;
 
 const requestBuilder =
@@ -39,7 +39,7 @@ const response =
 
 ## Set options for all requests
 
-```
+```javascript
 const RequestBuilder = require('drequest').RequestBuilder;
 
 const google =
@@ -54,7 +54,7 @@ const response =
 
 ## Define and use a class for more complex options
 
-```
+```javascript
 const RequestBuilder = require('drequest').RequestBuilder;
 
 const google =
