@@ -2,6 +2,7 @@
 [![Dependency Status](https://david-dm.org/dnode/drequest/status.svg)](https://david-dm.org/dnode/drequest)
 [![devDependency Status](https://david-dm.org/dnode/drequest/dev-status.svg)](https://david-dm.org/dnode/drequest?type=dev)
 
+
 # Installation
 
 `npm i --save drequest`
@@ -19,7 +20,6 @@ const response =
     .get('http://google.de');
 ```
 
-
 ## Set options for a request by a name
 
 ```javascript
@@ -35,7 +35,6 @@ const response =
   await RequestBuilder.request('google')
     .send();
 ```
-
 
 ## Set options for all requests
 
